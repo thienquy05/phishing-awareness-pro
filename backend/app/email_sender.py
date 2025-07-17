@@ -9,6 +9,7 @@ load_dotenv()
 def email_sender(to_user, ip, timestamp):
     sender_email = os.getenv("EMAIL")
     sender_pw = os.getenv("PASSWORD")
+    admin = os.getenv("ADMIN")
 
     if sender_email is None or sender_pw is None:
         raise ValueError("EMAIL and PASSWORD environment variables must be set")
