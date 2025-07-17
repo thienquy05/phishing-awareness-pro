@@ -1,7 +1,7 @@
 from flask import Blueprint, request, redirect, render_template
 import sqlite3
 from datetime import datetime
-from apps.email_sender import email_sender
+from app.email_sender import email_sender
 import os
 
 main = Blueprint("main", __name__)
