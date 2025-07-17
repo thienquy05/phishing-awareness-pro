@@ -11,7 +11,7 @@ function App() {
     e.preventDefault()
 
     try {
-      const response = await fetch("http://localhost:5000/logs", {
+      const response = await fetch("https://phish-tracker-demo.onrender.com/logs", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
