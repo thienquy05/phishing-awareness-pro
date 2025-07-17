@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
+
   const [email, setEmail] = useState("")
   const [consent, setConsent] = useState(false)
   const [message, setMessage] = useState("")
@@ -23,6 +24,8 @@ function App() {
       })
        const text = await response.text()
        setMessage(`${text}`)
+
+       localStorage.setItem("user_email", email)
     }
 
     catch (error) {
@@ -30,7 +33,6 @@ function App() {
       setMessage("Submission failed. Please try again.")
     }
   }
-
   return (
     <div className="App" style={{padding: "2rem", fontFamily:"Arial"}}>
       <h2>You just clicked on a suspicious link</h2>
