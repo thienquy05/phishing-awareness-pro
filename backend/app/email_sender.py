@@ -25,8 +25,11 @@ def email_sender(to_user, ip, timestamp):
                 <li><b>Your timestamp:</b> {timestamp} </li>
             </ul>
             <br>
-            <p><strong>This is the reminder to be cautious when clicking links in emails or somewhere else.</strong></p>
-            <p>Stay safe!</p>
+            <p><strong>⚠️ This is a reminder to stay cautious when clicking links in emails or unfamiliar websites.</strong></p>
+            <p>In real-world scenarios, malicious actors can do much more than what this awareness simulation demonstrates.</p>
+            <p>Always verify the sender, avoid downloading unknown attachments, and think twice before clicking suspicious links.</p>
+            <p><strong>🛡️ Stay alert. Stay informed. Stay safe.</strong></p>
+
             <br>
             <p><strong>Thien Quy Pham - Computer Science Student</strong><p>
         </body>

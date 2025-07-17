@@ -9,7 +9,7 @@ load_dotenv('assets/.env')
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY") # secure session support
-CORS(app, origins=["https://phish-tracker-demo.netlify.app/"])
+CORS(app)
 
 # Register blueprint
 app.register_blueprint(main)

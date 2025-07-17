@@ -11,7 +11,8 @@ function App() {
     e.preventDefault()
 
     try {
-      const response = await fetch("https://phish-tracker-demo.onrender.com/logs", {
+      const apiURL = import.meta.env.VITE_API_URL || "https://phish-tracker-demo.onrender.com"
+      const response = await fetch(`${apiURL}/logs`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"

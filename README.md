@@ -62,7 +62,7 @@ The project is split into two main parts:
 
     ```bash
     cd backend
-    python app.py
+    python main.py
     ```
 
     The backend will be running at `http://localhost:5000`.
