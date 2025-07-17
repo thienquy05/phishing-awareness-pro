@@ -1,4 +1,4 @@
-# Phishing Awareness Pro
+# Phishing Awareness Project
 
 This project is a simple web application designed to help people learn about phishing attacks. It simulates what happens when you click on a suspicious link and then asks for your email address. After you submit the form, the app sends you an email to remind you to be careful with phishing links.
 
@@ -46,7 +46,7 @@ The project is split into two main parts:
     EMAIL="your_email@gmail.com"
     PASSWORD="your_email_password"
     SECRET_KEY="your_secret_key"
-    DB_FILE="assets/data/clicks.db"
+    DB_FILE="/data/clicks.db"
     ```
 
 3.  **Set up the frontend:**
