@@ -1,4 +1,5 @@
 from flask import Blueprint, request, render_template
+from zoneinfo import ZoneInfo
 import sqlite3
 from datetime import datetime
 from app.email_sender import email_sender
@@ -36,7 +37,7 @@ def track_log():
     else:
         user_ip = "Not Authorized"
 
-    timestamp = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+    timestamp = datetime.now(ZoneInfo("America/New_York")).strftime("%Y/%m/%d %H:%M:%S")
     user_email = request.form.get("user_email")
 
     # Insert to database
