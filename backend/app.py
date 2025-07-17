@@ -1,5 +1,5 @@
 from flask import Flask
-from apps.routes import main, init_db
+from app.routes import main, init_db
 from dotenv import load_dotenv
 from flask_cors import CORS
 import os
