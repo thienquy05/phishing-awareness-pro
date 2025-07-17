@@ -5,12 +5,12 @@ from app.email_sender import email_sender
 import os
 
 main = Blueprint("main", __name__)
-
-DB_FILE = os.getenv("DB_FILE", "assets/data/clicks.db")
-
+basedir = os.path.abspath(os.path.dirname(__file__))
+db_path = os.path.join(basedir, 'assets', 'data', 'clicks.db')
+os.makedirs(os.path.dirname(db_path), exist_ok=True)
 # Create table if does not exist
 def init_db():
-    with sqlite3.connect(DB_FILE) as connection:
+    with sqlite3.connect(db_path) as connection:
         cursor = connection.cursor()
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS clicks (
@@ -40,7 +40,7 @@ def track_log():
     user_email = request.form.get("user_email")
 
     # Insert to database
-    with sqlite3.connect(DB_FILE) as conn:
+    with sqlite3.connect(db_path) as conn:
         c = conn.cursor()
         c.execute('''
                 INSERT INTO clicks (ip, timestamp, user_email) VALUES(?, ?, ?)      
@@ -53,7 +53,7 @@ def track_log():
 
 @main.route("/admin/view")
 def view_clicks():
-    with sqlite3.connect(DB_FILE) as conn:
+    with sqlite3.connect(db_path) as conn:
         c = conn.cursor()
         c.execute("SELECT * FROM clicks")
         rows = c.fetchall()
