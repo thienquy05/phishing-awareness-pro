@@ -1,16 +1,16 @@
-from flask import Blueprint, request, redirect, render_template
+from flask import Blueprint, request, render_template
 import sqlite3
 from datetime import datetime
 from app.email_sender import email_sender
 import os
 
 main = Blueprint("main", __name__)
-basedir = os.path.abspath(os.path.dirname(__file__))
-db_path = os.path.join(basedir, 'assets', 'data', 'clicks.db')
-os.makedirs(os.path.dirname(db_path), exist_ok=True)
+
+DB_FILE = os.getenv("DB_FILE", "assets/data/clicks.db")
+
 # Create table if does not exist
 def init_db():
-    with sqlite3.connect(db_path) as connection:
+    with sqlite3.connect(DB_FILE) as connection:
         cursor = connection.cursor()
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS clicks (
@@ -40,7 +40,7 @@ def track_log():
     user_email = request.form.get("user_email")
 
     # Insert to database
-    with sqlite3.connect(db_path) as conn:
+    with sqlite3.connect(DB_FILE) as conn:
         c = conn.cursor()
         c.execute('''
                 INSERT INTO clicks (ip, timestamp, user_email) VALUES(?, ?, ?)      
@@ -53,7 +53,7 @@ def track_log():
 
 @main.route("/admin/view")
 def view_clicks():
-    with sqlite3.connect(db_path) as conn:
+    with sqlite3.connect(DB_FILE) as conn:
         c = conn.cursor()
         c.execute("SELECT * FROM clicks")
         rows = c.fetchall()
