@@ -30,6 +30,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY") # secure session support
 CORS(app, resources={r"/*": {"origins": "https://phish-tracker-demo.netlify.app"}})
 
+initialize_database()
 # Register blueprint
 app.register_blueprint(main)
 
