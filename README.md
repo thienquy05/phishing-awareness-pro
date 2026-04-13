@@ -1,89 +1,31 @@
-# Phishing Awareness Project
+# 🚨 Phishing Awareness Pro
 
-This project is a simple web application designed to help people learn about phishing attacks. It simulates what happens when you click on a suspicious link and then asks for your email address. After you submit the form, the app sends you an email to remind you to be careful with phishing links.
+This project is an interactive web application designed to educate users about the dangers of phishing attacks. It simulates a scenario where a user clicks on a suspicious link and demonstrates what kind of information can be exposed (like IP addresses and timestamps).
 
-## Features
+After interacting with the simulation, the application sends an automated educational email, reminding the user to remain cautious and explaining the potential consequences of real-world phishing attacks.
 
-* **User-Friendly Interface**: A simple and clean user interface built with React and Vite.
-* **Flask Backend**: A backend API built with Flask to handle form submissions and send emails.
-* **SQLite Database**: A lightweight database to store information about user clicks.
-* **Email Reminders**: Automatically sends an email to users after they submit their information.
+## ✨ Features
 
-## How It's Organized
+* **Educational Simulation**: Demonstrates how easily data is collected when clicking unfamiliar links in a safe, transparent way.
+* **Modern Interface**: A clean, responsive user interface built with React, Next.js, and Tailwind CSS.
+* **Automated Email Reminders**: Uses a Python Flask backend to instantly send a professional, HTML-formatted security alert to the user's inbox outlining the captured data.
+* **Stateless & Privacy-Focused**: Designed without a persistent database (no SQLite or Postgres). No sensitive user data or logs are stored after the session ends—everything runs statelessly, prioritizing user privacy and making it perfectly compatible with serverless ecosystems (like Vercel).
 
-The project is split into two main parts:
+## 🏗️ Architecture
 
-* `frontend`: The React and Vite application that users interact with.
-* `backend`: The Flask application that powers the frontend.
+The project is split into perfectly decoupled frontend and backend components:
 
-## Getting Started
+* **`frontend/`**: The client-side application built with **Next.js** (TypeScript) and styled with Tailwind CSS. It handles the user interface and form management.
+* **`backend/`**: The API layer built with **Python & Flask**. It processes the request, securely grabs the environmental data (IP context and exact timestamp), and formats/dispatches the warning email using Python's built-in `smtplib` and `email.mime` modules.
 
-### What You'll Need
+## 🎯 Purpose
 
-* Python 3.8 or newer
-* Node.js 14.x or newer
-* `pip` and `npm`
+This tool was built to help people learn about cybersecurity practically. In real-world scenarios, malicious actors can do much more than what this awareness simulation demonstrates.
 
-### How to Install
+*Always verify the sender, avoid downloading unknown attachments, and think twice before clicking suspicious links.*
+    
+**🛡️ Stay alert. Stay informed. Stay safe.**
 
-1.  **Clone the repository:**
-
-    ```bash
-    git clone [https://github.com/thienquy05/phishing-awareness-pro.git](https://github.com/thienquy05/phishing-awareness-pro.git)
-    cd phishing-awareness-pro
-    ```
-
-2.  **Set up the backend:**
-
-    ```bash
-    cd backend
-    pip install -r requirements.txt
-    ```
-
-    Create a `.env` file in the `backend` directory and add the following:
-
-    ```
-    EMAIL="your_email@gmail.com"
-    PASSWORD="your_email_password"
-    SECRET_KEY="your_secret_key"
-    DB_FILE="/data/clicks.db"
-    ```
-
-3.  **Set up the frontend:**
-
-    ```bash
-    cd ../frontend
-    npm install
-    ```
-
-### How to Run the App
-
-1.  **Start the backend:**
-
-    ```bash
-    cd backend
-    python main.py
-    ```
-
-    The backend will be running at `http://localhost:5000`.
-
-2.  **Start the frontend:**
-
-    ```bash
-    cd frontend
-    npm run dev
-    ```
-
-    The frontend will be running at `http://localhost:5173`.
-
-## How to Use It
-
-1.  Open your browser and go to `http://localhost:5173`.
-2.  You'll see a form asking for your email and your consent to track your IP address.
-3.  Fill out the form and click "Verify Now."
-4.  You'll get an email reminding you to be cautious about phishing links.
-5.  You can see the data that's been collected by going to `http://localhost:5000/admin/view` (but remember to protect this route in a real-world application!).
-
-## Want to Contribute?
+## 🤝 Want to Contribute?
 
 I'd love your help! If you find any bugs or have ideas for how to make this project better, feel free to open an issue or create a pull request.

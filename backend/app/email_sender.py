@@ -9,30 +9,47 @@ load_dotenv()
 def email_sender(to_user, ip, timestamp):
     sender_email = os.getenv("EMAIL")
     sender_pw = os.getenv("PASSWORD")
-    admin = os.getenv("ADMIN")
 
     if sender_email is None or sender_pw is None:
         raise ValueError("EMAIL and PASSWORD environment variables must be set")
 
-    subject = "You've clicked on suspicious link - AWARENESS REMINDER"
+    subject = "🚨 Security Alert: You clicked a simulated phishing link"
     body = f"""
     <html>
-        <body>
-            <h3>Hello, </h3>
-            <p>Thanks for your participation in my awareness test. </p>
-            <p><strong>Details we logged: </strong></p>
+        <body style="font-family: Arial, sans-serif; color: #333; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <div style="background-color: #f8d7da; border-left: 5px solid #dc3545; padding: 15px; margin-bottom: 20px;">
+                <h2 style="color: #721c24; margin-top: 0;">Security Awareness Simulation</h2>
+                <p style="margin-bottom: 0;">Hello,</p>
+                <p>You recently clicked a link as part of a safe phishing awareness exercise. Thank you for participating!</p>
+            </div>
+            
+            <p>If this had been a real phishing attack, your personal data could have been compromised. Here is the information we successfully logged from your click:</p>
+            
+            <div style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                <ul style="list-style-type: none; padding-left: 0; margin: 0;">
+                    <li style="margin-bottom: 10px;">🌐 <b>Your IP Address:</b> {ip}</li>
+                    <li>🕒 <b>Timestamp:</b> {timestamp}</li>
+                </ul>
+            </div>
+            
+            <h3 style="color: #0056b3;">What you need to know:</h3>
+            <p>In real-world scenarios, malicious actors use links like these to steal credentials, install malware, or compromise your network.</p>
+            
             <ul>
-                <li><b>Your IP:</b> {ip} </li>
-                <li><b>Your timestamp:</b> {timestamp} </li>
+                <li>Always verify the sender's actual email address.</li>
+                <li>Hover over links to see the real destination before clicking.</li>
+                <li>Avoid downloading unknown attachments.</li>
+                <li>Think twice before acting on urgent or threatening requests.</li>
             </ul>
-            <br>
-            <p><strong>⚠️ This is a reminder to stay cautious when clicking links in emails or unfamiliar websites.</strong></p>
-            <p>In real-world scenarios, malicious actors can do much more than what this awareness simulation demonstrates.</p>
-            <p>Always verify the sender, avoid downloading unknown attachments, and think twice before clicking suspicious links.</p>
-            <p><strong>🛡️ Stay alert. Stay informed. Stay safe.</strong></p>
-
-            <br>
-            <p><strong>Thien Quy Pham - Computer Science Student</strong><p>
+            
+            <p style="font-size: 1.1em;"><strong>🛡️ Stay alert. Stay informed. Stay safe.</strong></p>
+            
+            <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
+            <p style="color: #666; font-size: 0.9em;">
+                <strong>Thien Quy Pham</strong><br>
+                Computer Science Student<br>
+                <em>Phishing Awareness Project</em>
+            </p>
         </body>
     </html>
     """
