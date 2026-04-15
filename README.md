@@ -11,6 +11,16 @@ After interacting with the simulation, the application sends an automated educat
 * **Automated Email Reminders**: Uses a Python Flask backend to instantly send a professional, HTML-formatted security alert to the user's inbox outlining the captured data.
 * **Stateless & Privacy-Focused**: Designed without a persistent database (no SQLite or Postgres). No sensitive user data or logs are stored after the session ends—everything runs statelessly, prioritizing user privacy and making it perfectly compatible with serverless ecosystems (like Vercel).
 
+## 🔒 Why Trust This Project? (Privacy & Security)
+
+We understand that entering your email address into an application designed to simulate phishing can feel counterintuitive. Here is exactly how we handle and protect your data:
+
+* **Zero Data Retention (No Database):** We do not use any databases (SQL, NoSQL, or otherwise). Your email address and IP address are never saved, stored, or logged to any permanent storage. 
+* **In-Memory Processing Only:** Your data only exists in the server's actively running memory for the exact fraction of a second it takes to send the automated email. Once the email is dispatched, the data is permanently destroyed.
+* **No Third-Party Tracking:** We do not sell, share, or distribute your email or information to any third parties, advertisers, or data brokers.
+* **Strict Rate Limiting & Abuse Prevention:** The backend API has strict rate-limiting (e.g., maximum 5 requests per minute, 20 per day per IP) to prevent spam, API abuse, and malicious bots.
+* **Open Source Transparency:** The entire codebase for both the frontend and backend is 100% open source. You can inspect exactly what happens to your data under the hood by looking at the `backend/app/routes.py` and `backend/app/email_sender.py` files.
+
 ## 🏗️ Architecture
 
 The project is split into perfectly decoupled frontend and backend components:
