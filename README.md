@@ -22,7 +22,7 @@ The project is split into perfectly decoupled frontend and backend components:
 
 This tool was built to help people learn about cybersecurity practically. In real-world scenarios, malicious actors can do much more than what this awareness simulation demonstrates.
 
-Visit here to learn more: thienquypham.vercel.app
+Visit here to learn more: clicksmart.vercel.app
 
 *Always verify the sender, avoid downloading unknown attachments, and think twice before clicking suspicious links.*
 
