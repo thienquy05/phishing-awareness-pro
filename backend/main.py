@@ -28,8 +28,8 @@ limiter = Limiter(
 def ratelimit_handler(e):
     return jsonify({"error": f"Rate limit exceeded: {e.description}"}), 429
 
-# Allow specific origins from env, or fallback to restrictive single root if empty
-allowed_origins = os.getenv("ALLOWED_ORIGIN")
+# Allow a specific origin from env, or fallback to a restrictive local/dev origin if unset or empty
+allowed_origins = os.getenv("ALLOWED_ORIGIN", "").strip() or "http://localhost:3000"
 CORS(app, resources={r"/*": {"origins": allowed_origins}})
 
 # Register blueprint
